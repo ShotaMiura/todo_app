@@ -19,7 +19,7 @@ class Post(db.Model):
 def index():
     if request.method == 'GET':
         posts = Post.query.order_by(Post.due).all()
-        return render_template('index.html', posts=posts, today=date.today())
+        return render_template('member.html', posts=posts, today=date.today())
 
     else:
         title = request.form.get('title')
@@ -70,4 +70,4 @@ def delete(id):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
