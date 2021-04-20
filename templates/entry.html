@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>アカウント作成</h1>
+    <p>
+      <form method="POST" action="{{url_for('entry')}}">
+        {{ entry.csrf_token }}
+
+        {{ entry.name.label }}:{{ entry.name }} <br>
+        {% for error in entry.name.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}<br>
+
+        {{ entry.mail.label }}:{{ entry.mail }}<br>
+        {% for error in entry.mail.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}<br>
+
+        {{ entry.submit}}
+     </form>
+     <li><a href='/'>TOPに戻る</a></li>
+    </p>
+{% endblock %}
